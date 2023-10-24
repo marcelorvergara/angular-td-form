@@ -24,8 +24,10 @@
              ngModel
              name="email"
              required
-             email>
+             email
+             #email="ngModel">
           </div>
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid e-mail!</span>
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
@@ -38,7 +40,11 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid"
+          >Submit</button>
       </form>
     </div>
   </div>
